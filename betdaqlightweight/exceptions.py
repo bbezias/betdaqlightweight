@@ -22,4 +22,5 @@ class APIError(BetdaqError):
 class StatusCodeError(BetdaqError):
     def __init__(self, status_code, description):
         message = 'Status code error: {} - {}'.format(status_code, description)
+        self.status_code = status_code
         super(BetdaqError, self).__init__(message)
