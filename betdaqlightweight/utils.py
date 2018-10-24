@@ -46,6 +46,9 @@ def to_dict(obj, client):
                 val = [to_dict(i, client) for i in v]
             elif isinstance(v, SudObject) or isinstance(v, dict):
                 val = to_dict(v, client)
+            elif isinstance(v, datetime) and v.tzinfo is not None:
+                # Make all the dates naive and UTC
+                val = v.astimezone(pytz.utc).replace(tzinfo=None)
             else:
                 val = v
             response[key] = val

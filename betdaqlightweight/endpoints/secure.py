@@ -76,12 +76,19 @@ class Endpoint(BaseEndpoint):
         :type want_settled_orders_on_unsettled_markets: bool
         :return: orders that have changed.
         """
-        return self.run(
+        response = self.run(
             'ListBootstrapOrders',
             'ListBootstrapOrdersRequest',
             SequenceNumber=sequence_number,
             wantSettledOrdersOnUnsettledMarkets=want_settled_orders_on_unsettled_markets
         )
+
+        # Remove the Order "layer". It's useless
+        if response.get('Orders'):
+            if 'Order' in response['Orders']:
+                response['Orders'] = response['Orders']['Order']
+
+        return response
 
     def list_orders_changed_since(self, sequence_number):
         """

@@ -77,3 +77,136 @@ class HeartbeatAction(Enum):
     CancelOrders = 1
     SuspendOrders = 2
     SuspendPunter = 3
+
+
+class MarketStatus(Enum):
+    """
+    The current status of a market.
+
+    INACTIVE: The Market is not active and has never had any Orders issued against it.
+    ACTIVE: The Market it active (that is, Orders can be issued against it).
+    SUSPENDED: The Market is not currently active but it has not yet been completed.
+    CLOSED: The Market is completed. No further Orders can be issued against the Market but the result of the
+    Market is either not yet known or has not yet been entered.
+    SETTLED: The Market has been fully settled.
+    VOIDED: The Market has been voided. All matched Orders in this Market have also been voided.
+    """
+    INACTIVE = 1
+    ACTIVE = 2
+    SUSPENDED = 3
+    CLOSED = 4
+    SETTLED = 6
+    VOIDED = 7
+
+
+class MarketType(Enum):
+    """
+    The type of a market.
+    """
+    Win = 1
+    Place = 2
+    MatchOdds = 3
+    OverUnder = 4
+    AsianHandicap = 10
+    TwoBall = 11
+    ThreeBall = 12
+    Unspecified = 13
+    MatchMarket = 14
+    SetMarket = 15
+    Moneyline = 16
+    Total = 17
+    Handicap = 18
+    EachWayNonHandicap = 19
+    EachWayHandicap = 20
+    EachWayTournament = 21
+    RunningBall = 22
+    MatchBetting = 23
+    MatchBettingInclDraw = 24
+    CorrectScore = 25
+    HalfTimeFullTime = 26
+    TotalGoals = 27
+    GoalsScored = 28
+    Corners = 29
+    OddsOrEvens = 30
+    HalfTimeResult = 31
+    HalfTimeScore = 32
+    MatchOddsExtraTime = 33
+    CorrectScoreExtraTime = 34
+    OverUnderExtraTime = 35
+    ToQualify = 36
+    DrawNoBet = 37
+    HalftimeAsianHcp = 39
+    HalftimeOverUnder = 40
+    NextGoal = 41
+    FirstGoalscorer = 42
+    LastGoalscorer = 43
+    PlayerToScore = 44
+    FirstHalfHandicap = 45
+    FirstHalfTotal = 46
+    SetBetting = 47
+    GroupBetting = 48
+    MatchplaySingle = 49
+    MatchplayFourball = 50
+    MatchplayFoursome = 51
+    TiedMatch = 52
+    TopBatsman = 53
+    InningsRuns = 54
+    TotalTries = 55
+    TotalPoints = 56
+    FrameBetting = 57
+    ToScoreFirst = 58
+    ToScoreLast = 59
+    FirstScoringPlay = 60
+    LastScoringPlay = 61
+    HighestScoringQtr = 62
+    RunLine = 63
+    RoundBetting = 64
+    LineBetting = 65
+
+
+class OrderActionType(Enum):
+    """
+    The type of an order history audit record.
+    """
+    Placed = 1
+    ExplicitlyUpdated = 2
+    Matched = 3
+    CancelledExplicitly = 4
+    CancelledByReset = 5
+    CancelledOnInRunning = 6
+    Expired = 7
+    MatchedPortionRepricedByR4 = 8
+    UnmatchedPortionRepricedByR4 = 9
+    UnmatchedPortionCancelledByWithdrawal = 10
+    Voided = 11
+    Settled = 12
+    Suspended = 13
+    Unsuspended = 14
+    ExpiredByMatching = 15
+    Unsettled = 16
+    Unmatched = 17
+    MatchedPortionRepriced = 18
+    CreatedFromLightweightPrice = 19
+    CancelledOnComplete = 20
+
+
+class OrderStatus(Enum):
+    """
+    The status of an order.
+
+    Unmatched: The order is active and has some amount available for matching (the order may be partially matched).
+    Matched: The order has not been settled and it does not have any unmatched amount. Either the order was fully
+    matched or it was partially matched and then cancelled.
+    Cancelled: This order has been cancelled and at least some of the order was unmatched at the time of
+    expiration.
+    Settled: The order has been settled.
+    Voided: The order has been voided.
+    Suspended: At least some of this order is unmatched but the order is suspended and is not available
+    for matching.
+    """
+    Unmatched = 1
+    Matched = 2
+    Cancelled = 3
+    Settled = 4
+    Voided = 5
+    Suspended = 6
