@@ -1,7 +1,5 @@
 # betdaqlightweight
 
-![Build Status](https://travis-ci.org/beziasb/betdaqlightweight.svg?branch=master)
-
 Super lightweight and fast python 3.x. wrapper for Betdaq.
 Only provide json-style output for the moment.
 Still in beta
