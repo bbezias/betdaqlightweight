@@ -12,12 +12,18 @@ class Endpoint(BaseEndpoint):
         """
         return self.run('ListTopLevelEvents', 'ListTopLevelEventsRequest', _WantPlayMarkets=want_play_markets)
 
-    def get_event_sub_tree_with_selections(self, event_classifier_ids=None, want_play_markets=None):
+    def get_event_sub_tree_with_selections(
+            self,
+            event_classifier_ids,
+            want_play_markets=None
+    ):
         """
         Get the tree of events and markets for given sports/events with selection.
 
         :param event_classifier_ids: list of sports/events for which to return events/markets
+        :type event_classifier_ids: ints
         :param want_play_markets: whether to return play or real markets, None is False
+        :type want_play_markets: bool
         :return: all markets for the given sport, with comp and event data flattened with selections
         """
         return self.run(
@@ -27,18 +33,28 @@ class Endpoint(BaseEndpoint):
             _WantPlayMarkets=want_play_markets
         )
 
-    def get_event_sub_tree_no_selections(self, event_classifier_ids=None, want_play_markets=None):
+    def get_event_sub_tree_no_selections(
+            self,
+            event_classifier_ids,
+            want_direct_descendents_only=False,
+            want_play_markets=None
+    ):
         """
         Get the tree of events and markets for given sports/events with selection.
 
         :param event_classifier_ids: list of sports/events for which to return events/markets
+        :type event_classifier_ids: ints
+        :param want_direct_descendents_only: whether to return direct descendents only
+        :type want_direct_descendents_only: bool
         :param want_play_markets: whether to return play or real markets, None is False
+        :type want_play_markets: bool
         :return: all markets for the given sport/event
         """
         return self.run(
             'GetEventSubTreeNoSelections',
             'GetEventSubTreeNoSelectionsRequest',
             EventClassifierIds=event_classifier_ids,
+            _WantDirectDescendentsOnly=want_direct_descendents_only,
             _WantPlayMarkets=want_play_markets
         )
 
