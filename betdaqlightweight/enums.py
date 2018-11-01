@@ -210,3 +210,64 @@ class OrderStatus(Enum):
     Settled = 4
     Voided = 5
     Suspended = 6
+
+
+class ReturnCode(Enum):
+    """
+    Error code coming from Betdaq
+    """
+    Success = 0
+    ResourceError = 1
+    SystemError = 2
+    EventClassifierDoesNotExist = 5
+    MarketDoesNotExist = 8
+    SelectionDoesNotExist = 11
+    MarketNotActive = 15
+    MarketNeitherSuspendedNorActive = 16
+    SelectionNotActive = 17
+    InsufficientVirtualPunterFunds = 19
+    OrderDoesNotExist = 21
+    NoUnmatchedAmount = 22
+    ResetHasOccurred = 114
+    OrderAlreadySuspended = 127
+    TradingCurrentlySuspended = 128
+    InvalidOdds = 131
+    WithdrawalSequenceNumberIsInvalid = 136
+    MaximumInputRecordsExceeded = 137
+    PunterSuspended = 208
+    PunterProhibitedFromPlacingOrders = 240
+    InsufficientPunterFunds = 241
+    OrderAPIInProgress = 271
+    PunterOrderMismatch = 274
+    MarketNotEnabledForMultiples = 281
+    MultipleLayerParameterAlreadyExists = 285
+    LevelsRequestedExceedsMaximum = 288
+    NoMultipleOfferAvailable = 289
+    InRunningDelayInEffect = 293
+    MultipleSelectionsUnderSameEvent = 295
+    MultipleSelectionsWithSameName = 296
+    DuplicateOrderSpecified = 299
+    OrderNotSuspended = 301
+    PunterIsSuspendedFromTrading = 302
+    PunterHasActiveOrders = 303
+    PunterNotSuspendedFromTrading = 304
+    ExpiryTimeInThePast = 305
+    NoChangeSpecified = 306
+    SoapHeaderNotSupplied = 307
+    IncorrectVersionNumber = 308
+    NoUsernameSpecified = 309
+    InvalidParameters = 310
+    NoPasswordSpecified = 3011
+    MultipleCombinationExclusionAlreadyExists = 312
+    MultipleCombinationExlcusionDoesNotExist = 313
+    InvalidPassword = 405
+    PunterIsBlacklisted = 406
+    PunterNotRegisteredAsMultipleLayer = 425
+    PunterAlreadyRegisteredForHeartbeat = 462
+    PunterNotRegisteredForHeartbeat = 463
+    ThresholdSpecifiedTooSmall = 473
+    UnmatchedOrderCouldResult = 477
+    PunterNotAuthorisedForAPI = 533
+    MarketIsForRealMoney = 597
+    MarketIsForPlayMoney = 598
+    CannotChangeToSPIfUnmatched = 892

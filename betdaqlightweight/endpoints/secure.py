@@ -99,11 +99,18 @@ class Endpoint(BaseEndpoint):
         :type sequence_number: int
         :return: orders that have changed.
         """
-        return self.run(
+        response = self.run(
             'ListOrdersChangedSince',
             'ListOrdersChangedSinceRequest',
             SequenceNumber=sequence_number
         )
+
+        # Remove the Order "layer". It's useless
+        if response.get('Orders'):
+            if 'Order' in response['Orders']:
+                response['Orders'] = response['Orders']['Order']
+
+        return response
 
     def get_order_details(self, order_id):
         """
@@ -122,7 +129,7 @@ class Endpoint(BaseEndpoint):
             _OrderId=order_id
         )
 
-    def place_orders_no_receipt(self, want_all_or_nothing_behaviour, orders):
+    def place_orders_no_receipt(self, orders, want_all_or_nothing_behaviour=False):
         """
         Places one or more orders at exchange.
         Receipt determines whether to wait for complete matching cycle or just return the order ID.

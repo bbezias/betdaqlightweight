@@ -1,4 +1,5 @@
 from betdaqlightweight.endpoints.base import BaseEndpoint
+from betdaqlightweight.enums import PriceFormat
 
 
 class Endpoint(BaseEndpoint):
@@ -119,7 +120,7 @@ class Endpoint(BaseEndpoint):
             _WantSelectionMatchedDetails=want_selection_matched_details,
         )
 
-    def get_odds_ladder(self, price_format=None):
+    def get_odds_ladder(self, price_format=PriceFormat.Decimal.value):
         """
         Get current odds ladder.
 

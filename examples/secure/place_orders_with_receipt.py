@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 c = Client('xxx', 'xxx')
 
 order_1 = place_order(
-    selection_id=86916201,
+    selection_id=87629777,
     stake=2,
     price=700,
     polarity=enums.Polarity.back.value,
@@ -16,7 +16,7 @@ order_1 = place_order(
 )
 
 order_2 = place_order(
-    selection_id=86916201,
+    selection_id=87629778,
     stake=3,
     price=600,
     polarity=enums.Polarity.back.value,
