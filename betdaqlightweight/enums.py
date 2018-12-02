@@ -83,20 +83,47 @@ class MarketStatus(Enum):
     """
     The current status of a market.
 
-    INACTIVE: The Market is not active and has never had any Orders issued against it.
-    ACTIVE: The Market it active (that is, Orders can be issued against it).
-    SUSPENDED: The Market is not currently active but it has not yet been completed.
-    CLOSED: The Market is completed. No further Orders can be issued against the Market but the result of the
+    Inactive: The Market is not active and has never had any Orders issued against it.
+    Active: The Market it active (that is, Orders can be issued against it).
+    Suspended: The Market is not currently active but it has not yet been completed.
+    Closed: The Market is completed. No further Orders can be issued against the Market but the result of the
     Market is either not yet known or has not yet been entered.
-    SETTLED: The Market has been fully settled.
-    VOIDED: The Market has been voided. All matched Orders in this Market have also been voided.
+    Settled: The Market has been fully settled.
+    Voided: The Market has been voided. All matched Orders in this Market have also been voided.
     """
-    INACTIVE = 1
-    ACTIVE = 2
-    SUSPENDED = 3
-    CLOSED = 4
-    SETTLED = 6
-    VOIDED = 7
+    Inactive = 1
+    Active = 2
+    Suspended = 3
+    Closed = 4
+    Settled = 6
+    Voided = 7
+
+
+class SelectionStatus(Enum):
+    """
+    The current status of a market.
+
+    Inactive: The Selection is not active and has never had any Orders issued against it.
+    Active: The Selection is active (that is, Orders can be issued against it).
+    Suspended: Orders can not currently be placed on this Selection.
+    Withdrawn: The Entrant explicitly referenced by the Selection has withdrawn from the Event and
+        so Orders can no longer be placed on this Selection.
+    BallotedOut The Entrant explicitly referenced by the Selection has been balloted-out.
+    Voided: Orders can no longer be placed on this Selection and Orders previously placed for or
+    against the Selection have been voided.
+    Completed: The Selection is completed. No further Orders can be issued against the Selection but the
+    result of the Selection is either not yet known or has not yet been entered.
+    Settled: This Selection has already been settled. Individual selections can be settled in advance of other
+    selections in the market being settled (early settlement).
+    """
+    Inactive = 1
+    Active = 2
+    Suspended = 3
+    Withdrawn = 4
+    BallotedOut = 9
+    Voided = 5
+    Completed = 6
+    Settled = 8
 
 
 class MarketType(Enum):
